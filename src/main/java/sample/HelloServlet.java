@@ -16,10 +16,14 @@ public class HelloServlet extends HttpServlet {
     @EJB
     private StatelessBean statelessBean;
 
+    @EJB
+    private HelloIF statefulBean;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         statelessBean.foo();
+        statefulBean.hello();
         out.println("After ejb invocation");
         out.flush();
         out.close();

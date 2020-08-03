@@ -1,6 +1,5 @@
 package sample;
 
-import javax.ejb.EJBException;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.naming.InitialContext;
@@ -10,18 +9,7 @@ import javax.naming.NamingException;
 @LocalBean
 public class StatelessBean {
     public void foo() {
-        HelloIF hello = lookup("", "hello", "", StatefulHello.class.getSimpleName(), HelloIF.class.getName(), true);
-        System.out.printf("## lookup result: %s%n", hello);
-
-        try {
-            hello.hello();
-        } catch (EJBException e) {
-            System.out.printf("## got EJBException:%n");
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            System.out.printf("## got IllegalStateException:%n");
-            e.printStackTrace();
-        }
+        System.out.printf("## foo method of %s%n", this);
     }
 
     <T> T lookup(String appName, String moduleName, String distinctName, String beanName, String interfaceName, boolean isStateful) {

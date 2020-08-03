@@ -10,6 +10,9 @@
 
 package sample;
 
+import javax.ejb.Remote;
+
+@Remote
 public interface HelloIF {
     void hello();
 }
